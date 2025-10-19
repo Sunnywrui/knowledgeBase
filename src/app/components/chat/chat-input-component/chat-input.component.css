@@ -1,0 +1,114 @@
+.chat-input-container {
+      padding: 16px 24px;
+      background: white;
+      border-top: 1px solid #e9ecef;
+    }
+
+    .input-wrapper {
+      display: flex;
+      gap: 12px;
+      align-items: flex-end;
+      background: #f8f9fa;
+      border: 2px solid #e9ecef;
+      border-radius: 12px;
+      padding: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .input-wrapper:focus-within {
+      border-color: #667eea;
+      background: white;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .chat-input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      resize: none;
+      font-size: 14px;
+      line-height: 1.5;
+      max-height: 150px;
+      overflow-y: auto;
+      font-family: inherit;
+      color: #2c3e50;
+    }
+
+    .chat-input:focus {
+      outline: none;
+    }
+
+    .chat-input:disabled {
+      color: #adb5bd;
+      cursor: not-allowed;
+      background: #f8f9fa;
+    }
+
+    .chat-input::placeholder {
+      color: #adb5bd;
+    }
+
+    .btn-send {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    }
+
+    .btn-send:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-send:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    .btn-send:disabled {
+      background: #dee2e6;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .spinner-small {
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .input-hint {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+      font-size: 12px;
+      color: #6c757d;
+    }
+
+    .hint-text {
+      opacity: 0.7;
+    }
+
+    .char-count {
+      font-weight: 500;
+    }
+
+    .char-count.warning {
+      color: #dc3545;
+    }

@@ -1,0 +1,29 @@
+<div class="chat-input-container">
+      <div class="input-wrapper">
+        <textarea
+          #inputElement
+          [(ngModel)]="messageContent"
+          (input)="autoResize()"
+          (keydown.enter)="onEnterPress($event)"
+          [disabled]="isLoading"
+          placeholder="输入您的问题... (Shift+Enter 换行)"
+          class="chat-input"
+          rows="4"></textarea>
+        <button
+          (click)="onSend()"
+          [disabled]="!messageContent.trim() || isLoading"
+          class="btn-send"
+          title="发送消息">
+          <svg *ngIf="!isLoading" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M10.894 2.553a1 1 0 0 0-1.788 0l-7 14a1 1 0 0 0 1.169 1.409l5-1.429A1 1 0 0 0 9.5 15.571V11a1 1 0 0 1 2 0v4.571a1 1 0 0 0 .725.962l5 1.428a1 1 0 0 0 1.17-1.408l-7-14z"/>
+          </svg>
+          <div *ngIf="isLoading" class="spinner-small"></div>
+        </button>
+      </div>
+      <div class="input-hint">
+        <span class="hint-text">按 Enter 发送，Shift+Enter 换行</span>
+        <span class="char-count" [class.warning]="messageContent.length > 1500">
+          {{ messageContent.length }} / 2000
+        </span>
+      </div>
+</div>

@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ConversationsService } from '../services/conversations.service';
+import { ConversationsService } from '../core/services/conversations.service';
 
 @Component({
   selector: 'app-sidebar',

@@ -1,8 +1,8 @@
 import { Component, OnDestroy, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ChatService } from '../services/chat.service';
-import { UploadService } from '../services/upload.service';
-import { PreviewService } from '../services/preview.service';
+import { ChatService } from '../core/services/chat.service';
+import { UploadService } from '../core/services/upload.service';
+import { PreviewService } from '../core/services/preview.service';
 import { ChatChunk, Citation } from '../types';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';

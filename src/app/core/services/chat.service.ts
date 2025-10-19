@@ -1,7 +1,7 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Subject, firstValueFrom } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { AskPayload, ChatChunk, Citation } from '../types';
+import { AskPayload, ChatChunk, Citation } from '../../types';
 import { ConversationsService } from './conversations.service';
 
 @Injectable({providedIn:'root'})

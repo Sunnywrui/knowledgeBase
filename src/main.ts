@@ -1,8 +1,6 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { AppShellComponent } from './app/app-shell.component';
-import { localAuthInterceptor } from './app/services/local-auth.interceptor';
+import { appConfig } from './app/app.config';
+import { AppComponent } from './app/app.component';
 
-bootstrapApplication(AppShellComponent, {
-  providers: [ provideHttpClient(withInterceptors([localAuthInterceptor])) ]
-}).catch(err => console.error(err));
+bootstrapApplication(AppComponent, appConfig)
+  .catch((err) => console.error(err));

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { PreviewService } from '../services/preview.service';
+import { PreviewService } from '../core/services/preview.service';
 
 @Component({
   selector: 'app-preview-pane',

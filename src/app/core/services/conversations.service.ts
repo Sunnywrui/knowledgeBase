@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, firstValueFrom } from 'rxjs';
-import { Conversation } from '../types';
+import { Conversation } from '../../types';
 
 @Injectable({providedIn:'root'})
 export class ConversationsService{
