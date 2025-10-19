@@ -82,36 +82,36 @@ input:focus, textarea:focus {
   }
 }
 
-/* 响应式断点 */
-@media (max-width: 1200px) {
-  .app-container {
-    .main-content {
-      app-left-sidebar {
-        width: 20%;
-      }
-      app-chat-area {
-        width: 55%;
-      }
-      app-reference-panel {
-        width: 25%;
-      }
-    }
-  }
-}
+// /* 响应式断点 */
+// @media (max-width: 1200px) {
+//   .app-container {
+//     .main-content {
+//       app-left-sidebar {
+//         width: 20%;
+//       }
+//       app-chat-area {
+//         width: 55%;
+//       }
+//       app-reference-panel {
+//         width: 100%;
+//       }
+//     }
+//   }
+// }
 
-@media (max-width: 768px) {
-  .app-container {
-    .main-content {
-      flex-direction: column;
+// @media (max-width: 768px) {
+//   .app-container {
+//     .main-content {
+//       flex-direction: column;
       
-      app-left-sidebar,
-      app-chat-area,
-      app-reference-panel {
-        width: 100%;
-      }
-    }
-  }
-}
+//       app-left-sidebar,
+//       app-chat-area,
+//       app-reference-panel {
+//         width: 100%;
+//       }
+//     }
+//   }
+// }
 
 /* 辅助类 */
 .text-center {
@@ -144,3 +144,7 @@ input:focus, textarea:focus {
 .p-2 { padding: 0.5rem; }
 .p-3 { padding: 1rem; }
 .p-4 { padding: 1.5rem; }
+
+
+
+

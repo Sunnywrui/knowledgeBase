@@ -28,17 +28,25 @@ import { ConversationService } from './core/services/conversation.service';
   `,
   styles: [`
     .app-container {
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-      overflow: hidden;
-      background: #ffffff;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+        background: #ffffff;
+        box-sizing: border-box;
     }
 
+    /* ===== 三列主区域 ===== */
     .main-content {
-      flex: 1;
-      display: flex;
-      min-height: 0;
+        flex: 1;
+        display: grid;
+        grid-template-columns: 280px 1fr 340px; /* 左固定 / 中自适应 / 右固定 */
+        gap: 16px;
+        padding: 16px;
+        min-height: 0;   /* 允许内部滚动 */
+        min-width: 0;
+        box-sizing: border-box;
     }
   `]
 })

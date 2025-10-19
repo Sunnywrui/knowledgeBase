@@ -83,7 +83,7 @@ import { ReferenceDetail } from '../../core/models';
   `,
   styles: [`
     .reference-panel {
-      width: 25%;
+      width: 100%;
       background: #f8f9fa;
       border-left: 1px solid #dee2e6;
       display: flex;
