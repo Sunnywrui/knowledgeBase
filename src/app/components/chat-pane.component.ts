@@ -1,4 +1,4 @@
-import { Component, OnDestroy, signal } from '@angular/core';
+import { Component, OnDestroy, signal, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChatService } from '../core/services/chat.service';
 import { UploadService } from '../core/services/upload.service';
@@ -9,6 +9,7 @@ import DOMPurify from 'dompurify';
 import { AnswerListComponent, ViewMsg } from './answer-list.component';
 import { UploadBarComponent } from './upload-bar.component';
 import { ComposerComponent } from './composer.component';
+import { PreviewPaneComponent } from './preview-pane.component';
 
 @Component({
   selector: 'app-chat-pane',
@@ -25,11 +26,12 @@ import { ComposerComponent } from './composer.component';
 
     <app-upload-bar [progress]="progress()" (files)="upload($event)"></app-upload-bar>
 
-    <app-composer (send)="send($event)"></app-composer>
+    <app-composer (send)="send($event)" (inputChange)="onInputChange($event)"></app-composer>
   </section>
   `
 })
 export class ChatPaneComponent implements OnDestroy{
+  @ViewChild(PreviewPaneComponent) previewPane?: PreviewPaneComponent;
   private es?:EventSource;
   messages = signal<ViewMsg[]>([]);
   progress = signal(0);
@@ -46,14 +48,33 @@ export class ChatPaneComponent implements OnDestroy{
     });
   }
 
-  send(q:string){
-    this.messages.update(v=>[...v,{role:'user',text:q,time:Date.now()},{role:'assistant',html:'',time:Date.now()}]);
-    try{ this.es=this.chat.askSSE(q); }
-    catch{ this.chat.askOnce(q); }
+  send(q: string) {
+    const params = this.previewPane?.paramsComponent?.getParams() || [];
+    this.messages.update(v => [
+      ...v,
+      { role: 'user', text: q, time: Date.now() },
+      { role: 'assistant', html: '', time: Date.now() }
+    ]);
+    try { 
+      this.es = this.chat.askSSE(q, params); 
+    } catch { 
+      this.chat.askOnce(q, params); 
+    }
   }
 
   upload(files:File[]){
     this.up.upload(files).subscribe(p=>this.progress.set(p));
+  }
+
+  onInputChange(text: string) {
+    console.log('输入内容:', text.trim() ? '有内容' : '无内容');
+    setTimeout(() => {
+      if (this.previewPane?.paramsComponent) {
+        this.previewPane.paramsComponent.setDisabled(!text.trim());
+      } else {
+        console.warn('paramsComponent 未加载');
+      }
+    }, 0);
   }
 
   append(delta:string){

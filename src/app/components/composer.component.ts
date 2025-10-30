@@ -6,9 +6,15 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-composer',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  template: `
+  template: `    
     <form class="composer" (ngSubmit)="submit()">
-      <textarea [(ngModel)]="value" name="q" [placeholder]="placeholder" rows="2"></textarea>
+      <textarea 
+        [(ngModel)]="value" 
+        (ngModelChange)="inputChange.emit(value)"
+        name="q" 
+        [placeholder]="placeholder" 
+        rows="2">
+      </textarea>
       <button type="submit">发送</button>
     </form>
   `
@@ -17,5 +23,6 @@ export class ComposerComponent{
   @Input() value = '';
   @Input() placeholder = '你说点什么…';
   @Output() send = new EventEmitter<string>();
+  @Output() inputChange = new EventEmitter<string>();
   submit(){ const q=this.value.trim(); if(q){ this.send.emit(q); this.value=''; } }
 }

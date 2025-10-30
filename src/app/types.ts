@@ -7,4 +7,10 @@ export type ChatChunk =
   | { type:'token'|'message'|'sources'|'error'; data:any }
   | { type:'done'; data?:any };
 
-export type AskPayload = { query: string; conversation_id?: string; stream?: boolean; settings?: any; };
+export type AskPayload = { 
+  query: string; 
+  conversation_id?: string; 
+  stream?: boolean; 
+  prompt_params?: Array<{key: string, value: string}>;
+  settings?: any; 
+};

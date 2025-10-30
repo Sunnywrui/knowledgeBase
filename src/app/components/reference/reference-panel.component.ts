@@ -4,11 +4,13 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ReferenceService } from '../../core/services/reference.service';
 import { ReferenceDetail } from '../../core/models';
+import { FormsModule } from '@angular/forms';
+import { PromptParamsComponent } from '../prompt-params.component';
 
 @Component({
   selector: 'app-reference-panel',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, PromptParamsComponent],
   template: `
     <aside class="reference-panel">
       <!-- 未选择状态 -->
@@ -79,6 +81,7 @@ import { ReferenceDetail } from '../../core/models';
           <div class="excerpt-text">{{ reference.excerpt }}</div>
         </div>
       </div>
+      <app-prompt-params></app-prompt-params>
     </aside>
   `,
   styles: [`

@@ -146,5 +146,24 @@ input:focus, textarea:focus {
 .p-4 { padding: 1.5rem; }
 
 
+/* Preview column with params */
+.preview {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 
+.preview header {
+  flex-shrink: 0;
+}
+
+.viewer {
+  flex: 1;
+  min-height: 0;
+}
+
+app-prompt-params {
+  flex-shrink: 0;
+  display: block;
+}
 

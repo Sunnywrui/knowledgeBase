@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { PreviewService } from '../core/services/preview.service';
+import { PromptParamsComponent } from './prompt-params.component';
 
 @Component({
   selector: 'app-preview-pane',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, PromptParamsComponent],
   template: `
+    <app-prompt-params></app-prompt-params>
     <section class="preview">
       <header>
         <div style="font-weight:600;">{{ title || '预览' }}</div>
@@ -24,6 +26,7 @@ import { PreviewService } from '../core/services/preview.service';
   `
 })
 export class PreviewPaneComponent{
+  @ViewChild(PromptParamsComponent) paramsComponent?: PromptParamsComponent;
   title=''; url=''; isPdf=false; isWeb=false; safeUrl: SafeResourceUrl|null=null;
   constructor(private svc:PreviewService, private san:DomSanitizer){
     this.svc.current$.subscribe(p=>{
